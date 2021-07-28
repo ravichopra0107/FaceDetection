@@ -1,18 +1,22 @@
 // Requiring modules
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { Meal, User } = require("./schemas.js");
 const authRoutes = require("./routes/authRoutes.js");
+const mealRoutes = require("./routes/mealRoutes.js");
 
 const app = express();
 
 // Setting up middlewares
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
+app.use("/api/meal", mealRoutes);
 
 mongoose.connect("mongodb://localhost:27017/messDB", {
   useNewUrlParser: true,

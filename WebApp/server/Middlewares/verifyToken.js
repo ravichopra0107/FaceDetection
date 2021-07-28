@@ -6,10 +6,10 @@ const verifyToken = (req, res, next) => {
       const data = jwt.verify(req.cookies.token, process.env.JWTSECRET);
       next();
     } else {
-      res.json({ status: false }).status(400);
+      res.sendStatus(403);
     }
   } else {
-    res.json({ status: false }).status(400);
+    res.sendStatus(403);
   }
 };
 

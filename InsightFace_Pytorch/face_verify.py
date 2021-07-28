@@ -4,6 +4,7 @@ import argparse
 from pathlib import Path
 from multiprocessing import Process, Pipe, Value, Array
 import torch
+import requests
 from config import get_config
 from mtcnn import MTCNN
 from Learner import face_learner
@@ -64,12 +65,19 @@ if __name__ == '__main__':
                 for idx, bbox in enumerate(bboxes):
                     if not flags[idx]:
                         print(names[results[idx] + 1])
-                        flags[idx] = True
-                    # Send request to Web Server with roll ID
-                    if args.score:
-                        frame = draw_box_name(bbox, names[results[idx] + 1] + '_{:.2f}'.format(score[idx]), frame)
-                    else:
-                        frame = draw_box_name(bbox, names[results[idx] + 1], frame)
+                        # Send request to Web Server with roll ID
+                        req = requests.post("http://localhost:3000/api/meal/", json = {"id": names[results[idx] + 1], "admin": "12345"})
+                        if req.status_code == 403:
+                            print("Wrong")
+                            cap.release()
+                            cv2.destroyAllWindows()
+                            quit()
+                        elif req.status_code == 200:
+                            flags[idx] = True
+                    # if args.score:
+                    #     frame = draw_box_name(bbox, names[results[idx] + 1] + '_{:.2f}'.format(score[idx]), frame)
+                    # else:
+                    #     frame = draw_box_name(bbox, names[results[idx] + 1], frame)
             except:
                 print('detect error')
 

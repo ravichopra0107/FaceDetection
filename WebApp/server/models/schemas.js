@@ -4,6 +4,7 @@ const mealSchema = new mongoose.Schema({
   time: { type: Date, required: true },
   // mealType: 'B', 'L', 'D'
   mealType: { type: String, required: true },
+  due: { type: Boolean, required: true },
 });
 
 const studentSchema = new mongoose.Schema({
