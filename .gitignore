@@ -260,10 +260,8 @@ InsightFace_Pytorch/mtcnn_pytorch/src/weights/model_ir_se50.pth
 InsightFace_Pytorch/mtcnn_pytorch/src/weights/onet.npy
 InsightFace_Pytorch/mtcnn_pytorch/src/weights/pnet.npy
 InsightFace_Pytorch/mtcnn_pytorch/src/weights/rnet.npy
-InsightFace_Pytorch/work_space/save/head_final.pth
-InsightFace_Pytorch/work_space/save/model_final.pth
-InsightFace_Pytorch/work_space/save/optimizer_final.pth
-InsightFace_Pytorch/data/facebank/2019bcs046/
+InsightFace_Pytorch/work_space/save/
+InsightFace_Pytorch/data/facebank/
 InsightFace_Pytorch/data/facebank/facebank.pth
 InsightFace_Pytorch/data/facebank/names.npy
 InsightFace_Pytorch/work_space/model_final.pth

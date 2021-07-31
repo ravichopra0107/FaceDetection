@@ -12,6 +12,8 @@ from utils import load_facebank, draw_box_name, prepare_facebank
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='for face verification')
+    parser.add_argument("-p","--password", help="Admin password")
+    parser.add_argument("-t", "--test", help="whether test", default=False, type=bool)
     parser.add_argument("-s", "--save", help="whether save", action="store_true")
     parser.add_argument('-th', '--threshold', help='threshold to decide identical faces', default=1.54, type=float)
     parser.add_argument("-u", "--update", help="whether perform update the facebank", action="store_true")
@@ -63,21 +65,24 @@ if __name__ == '__main__':
                 bboxes = bboxes + [-1, -1, 1, 1]  # personal choice
                 results, score = learner.infer(conf, faces, targets, args.tta)
                 for idx, bbox in enumerate(bboxes):
-                    if not flags[idx]:
-                        print(names[results[idx] + 1])
-                        # Send request to Web Server with roll ID
-                        req = requests.post("http://localhost:3000/api/meal/", json = {"id": names[results[idx] + 1], "admin": "12345"})
-                        if req.status_code == 403:
-                            print("Wrong")
-                            cap.release()
-                            cv2.destroyAllWindows()
-                            quit()
-                        elif req.status_code == 200:
-                            flags[idx] = True
-                    # if args.score:
-                    #     frame = draw_box_name(bbox, names[results[idx] + 1] + '_{:.2f}'.format(score[idx]), frame)
-                    # else:
-                    #     frame = draw_box_name(bbox, names[results[idx] + 1], frame)
+                    if not args.test:
+                        if not flags[idx]:
+                            print(names[results[idx] + 1])
+                            # Send request to Web Server with roll ID
+                            req = requests.post("http://localhost:3000/api/meal/",
+                                                json={"id": names[results[idx] + 1], "admin": args.password})
+                            if req.status_code == 403:
+                                print("Wrong")
+                                cap.release()
+                                cv2.destroyAllWindows()
+                                quit()
+                            elif req.status_code == 200:
+                                flags[idx] = True
+                    else:
+                        if args.score:
+                            frame = draw_box_name(bbox, names[results[idx] + 1] + '_{:.2f}'.format(score[idx]), frame)
+                        else:
+                            frame = draw_box_name(bbox, names[results[idx] + 1], frame)
             except:
                 print('detect error')
 

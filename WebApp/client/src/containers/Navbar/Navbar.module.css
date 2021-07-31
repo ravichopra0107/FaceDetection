@@ -1,0 +1,21 @@
+.Navbar {
+  background-color: #512d6d;
+  padding: 0.5vh 5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.Ulink {
+  margin: 0;
+  font-size: 1.75vh;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+.Ulink:hover, .Ulink:active{
+  color: #F8485E;
+}
+.Ulink h1 {
+  margin: 0;
+}

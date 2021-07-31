@@ -1,0 +1,11 @@
+.Logo{
+    height: 5vh;
+    box-sizing: border-box;
+}
+.LogoText{
+    font-family: 'Archivo Black', sans-serif;
+    color: #eeeeee;
+    display: inline-block;
+    font-size: 5vh;
+    margin:0;
+}

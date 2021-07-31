@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const checkAdmin = require("../Middlewares/checkAdmin.js");
 const verifyToken = require("../Middlewares/verifyToken.js");
+const sendMessage = require("../utils/sendMessage.js");
 const { Student, Meal } = require("../models/schemas.js");
 
 router
@@ -30,6 +31,11 @@ router
           student.meals.push(meal);
           student.save((err) => {
             if (!err) {
+              // CHANGE
+              // sendMessage(
+              //   `Hello ${student.name},\n Enjoy your meal!`,
+              //   student.contact
+              // );
               res.sendStatus(200);
             } else {
               console.log(err);
