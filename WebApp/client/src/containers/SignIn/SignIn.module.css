@@ -1,0 +1,57 @@
+.SignIn {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+  margin-top: 10vh;
+}
+.SignIn h1 {
+  margin: auto;
+  margin-bottom: 3vh;
+  font-size: 5vh;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+}
+.SignIn input {
+  margin: 3vh auto;
+  padding: 1vw;
+  font-size: 4vh;
+  background-color: #eeeeee;
+  border: none;
+  outline: none;
+  font-family: "Lato", sans-serif;
+}
+.SignIn input:focus {
+  border-bottom: 0.5vh solid #00c1d4;
+}
+.Button {
+  margin: auto;
+  margin-top: 2vh;
+  font-family: "Lato", sans-serif;
+  font-size: 3vh;
+  color: #000000;
+  border: none;
+  padding: 1vh 3vh;
+  background-color: #00c1d4;
+  cursor: pointer;
+}
+.Button:hover :global .fa-chevron-right {
+  text-decoration: underline;
+  margin-right: 0.2vw;
+}
+.Button:hover,
+.Button:active {
+  font-weight: bold;
+  color: #eeeeee;
+}
+.P{
+    cursor: pointer;
+}
+.P:hover,
+.P:active {
+  color: #f8485e;
+}
+.Error {
+  color: #f8485e;
+  font-family: "Lato", sans-serif;
+}

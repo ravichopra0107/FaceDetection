@@ -103,7 +103,7 @@ router.post("/login", (req, res) => {
                   .cookie("token", token, {
                     expires: new Date(Date.now() + 1 * 3600000),
                   })
-                  .json({ status: true, token: token });
+                  .json({ status: true, token: token, user: user._doc });
               }
             });
           } else {

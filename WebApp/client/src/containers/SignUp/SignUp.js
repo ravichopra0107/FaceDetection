@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classes from "./SignUp.module.css";
 import foodSVG from "../../assets/food.svg";
+import loaderSVG from "../../assets/loader.svg";
 import Navbar from "../Navbar/Navbar.js";
 import Footer from "../../components/Footer/Footer.js";
 import Aux from "../../hoc/Aux/Aux.js";
@@ -16,6 +17,7 @@ class SignUp extends Component {
     phone: "",
     password: "",
     cPassword: "",
+    loading: false,
   };
   change = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -68,6 +70,7 @@ class SignUp extends Component {
       this.checkPassword(this.state.password) &&
       this.checkConfirmPassword()
     ) {
+      this.setState({ loading: true });
       axios
         .post("/api/auth/signup", {
           name: this.state.name,
@@ -93,6 +96,7 @@ class SignUp extends Component {
           } else {
             this.changeDiv();
           }
+          setTimeout(() => this.setState({ loading: false }), 1000);
         });
     }
   };
@@ -103,7 +107,7 @@ class SignUp extends Component {
         <div className={classes.Parent}>
           <div className={classes.Child1}>
             {this.state.div === 1 && (
-              <Fade right distance="20%">
+              <Fade>
                 <div>
                   <h1>Get Started</h1>
                   <input
@@ -125,10 +129,11 @@ class SignUp extends Component {
               </Fade>
             )}
             {this.state.div === 2 && (
-              <Fade right distance="20%">
+              <Fade>
                 <div className={classes.Div2}>
                   <label htmlFor="roll">Roll Number:</label>
                   <input
+                    autoFocus
                     placeholder="2019bcsxxx"
                     type="text"
                     id="roll"
@@ -183,13 +188,26 @@ class SignUp extends Component {
                       *Password and confirm password are not same.
                     </p>
                   )}
-                  <button
-                    type="submit"
-                    className={classes.Button}
-                    onClick={this.submit}
-                  >
-                    Submit <i className="fas fa-chevron-right"></i>
-                  </button>
+                  {this.state.loading ? (
+                    <button
+                      className={classes.Button}
+                      style={{ cursor: "disabled" }}
+                    >
+                      <img
+                        style={{ height: "5vh" }}
+                        src={loaderSVG}
+                        alt="loaderSVG"
+                      />
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className={classes.Button}
+                      onClick={this.submit}
+                    >
+                      Submit <i className="fas fa-chevron-right"></i>
+                    </button>
+                  )}
                   <button
                     className={classes.BackButton}
                     onClick={this.changeDiv}

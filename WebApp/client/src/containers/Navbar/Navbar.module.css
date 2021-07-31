@@ -8,7 +8,7 @@
 }
 .Ulink {
   margin: 0;
-  font-size: 1.75vh;
+  font-size: 4vh;
   font-weight: bold;
   font-family: "Lato", sans-serif;
   color: white;
@@ -18,4 +18,20 @@
 }
 .Ulink h1 {
   margin: 0;
+}
+.Link{
+  text-decoration: none;
+  margin: 0;
+  font-size: 4vh;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+.Items{
+  width: 8vw;
+  display: flex;
+  justify-content: space-between;
+}
+.Link:hover, .Link:active{
+  color: #F8485E;
 }

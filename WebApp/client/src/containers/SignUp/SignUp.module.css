@@ -42,10 +42,8 @@
   text-decoration: underline;
   margin-right: 0.2vw;
 }
-.Button:hover,
-.Button:active {
+.Button:hover {
   font-weight: bold;
-  background-color: #f8485e;
   color: #eeeeee;
 }
 .Child2 {
@@ -70,7 +68,7 @@
   color: #f8485e;
   font-family: "Lato", sans-serif;
 }
-.Error:last-of-type{
+.Error:last-of-type {
   margin-bottom: 2vh;
 }
 .Child1 label {

@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
 import SignUp from "./containers/SignUp/SignUp.js";
+import SignIn from "./containers/SignIn/SignIn.js";
 
 class App extends Component {
   UNSAFE_componentWillMount() {
@@ -12,7 +13,7 @@ class App extends Component {
     if (user) {
       var decodedToken = jwt_decode(user.token);
       var dateNow = new Date();
-      if (decodedToken.exp < dateNow.getTime()) isExpired = true;
+      if (decodedToken.iat + 3600000 > dateNow.getTime()) isExpired = true;
       if (isExpired) {
         localStorage.clear();
         this.props.setAuthFalse();
@@ -25,6 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
+          <Route path="/login" component={SignIn} />
           <Route path="/" component={SignUp} />
         </Switch>
       </div>
