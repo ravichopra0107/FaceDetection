@@ -52,8 +52,13 @@ router
     });
   })
   .get(verifyToken, (req, res) => {
-    const user = req.cookies.user._doc;
-    Student.findOne({ rollID: user.rollID }, (err, student) => {
+    let rollID = "";
+    if (req.cookies.user) {
+      rollID = req.cookies.user._doc.rollID;
+    } else if (req.body.user) {
+      rollID = req.body.user.rollID;
+    }
+    Student.findOne({ rollID: rollID }, (err, student) => {
       if (!err) {
         if (student) {
           res.status(200);

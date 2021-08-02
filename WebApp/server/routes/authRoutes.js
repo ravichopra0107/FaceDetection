@@ -38,7 +38,7 @@ router.post("/signup", (req, res) => {
               console.log("Successfully added to database!");
               // CHANGE
               // sendMessage(
-              //   `Hello ${req.body.name},\nwelcome to ate`,
+              //   `Hello ${req.body.name},\nwelcome to ATE...*`,
               //   req.body.contact
               // );
               jwt.sign(
@@ -92,20 +92,25 @@ router.post("/login", (req, res) => {
             // user without a password field
             user = { ...user, password: null };
             // Sign a token
-            jwt.sign({ user: user }, process.env.JWTSECRET, (err, token) => {
-              if (!err) {
-                // Set user and token to a cookie
-                res.status(200);
-                res
-                  .cookie("user", user, {
-                    expires: new Date(Date.now() + 1 * 3600000),
-                  })
-                  .cookie("token", token, {
-                    expires: new Date(Date.now() + 1 * 3600000),
-                  })
-                  .json({ status: true, token: token, user: user._doc });
+            jwt.sign(
+              { user: user },
+              process.env.JWTSECRET,
+              { expiresIn: "1hr" },
+              (err, token) => {
+                if (!err) {
+                  // Set user and token to a cookie
+                  res.status(200);
+                  res
+                    .cookie("user", user, {
+                      expires: new Date(Date.now() + 1 * 3600000),
+                    })
+                    .cookie("token", token, {
+                      expires: new Date(Date.now() + 1 * 3600000),
+                    })
+                    .json({ status: true, token: token, user: user._doc });
+                }
               }
-            });
+            );
           } else {
             res.status(403);
             res.json({ status: false });
