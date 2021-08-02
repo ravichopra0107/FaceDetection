@@ -1,0 +1,12 @@
+.TableData {
+  padding: 0.7vh 1vw;
+  font-size: 3.5vh;
+  font-family: "Lato", sans-serif;
+}
+.TableRow {
+  border-bottom: 0.5vh solid #00c1d4;
+}
+.TableRow:hover {
+  border-bottom: 0.5vh solid #f8485e;
+  background-color: #eeeeee;
+}

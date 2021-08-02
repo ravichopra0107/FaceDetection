@@ -58,6 +58,7 @@ router
     } else if (req.body.user) {
       rollID = req.body.user.rollID;
     }
+    console.log(rollID);
     Student.findOne({ rollID: rollID }, (err, student) => {
       if (!err) {
         if (student) {

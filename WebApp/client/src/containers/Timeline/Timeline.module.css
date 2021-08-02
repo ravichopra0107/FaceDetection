@@ -1,0 +1,14 @@
+.Table{
+    border-collapse: collapse;
+    margin: auto;
+    width: 50vw;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 5vh;
+}
+.TableHead{
+    padding: 0.7vh 1vw;
+    border-bottom: 0.8vh solid #00C1D4;
+    font-size: 4vh;
+    font-family: "Lato", sans-serif;
+}

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import Timeline from "./containers/Timeline/Timeline.js";
 import SignUp from "./containers/SignUp/SignUp.js";
 import Payment from "./containers/Payment/Payment.js";
+import OTP from "./containers/OTP/otp.js";
 import SignIn from "./containers/SignIn/SignIn.js";
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
+          <Route path="/otp" component={OTP} />
           <Route path="/pay" component={Payment} />
           <Route path="/login" component={SignIn} />
           <Route path="/" component={this.props.auth ? Timeline : SignUp} />

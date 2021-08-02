@@ -6,6 +6,7 @@ import classes from "./SignIn.module.css";
 import Footer from "../../components/Footer/Footer.js";
 import Fade from "react-reveal/Fade";
 import axios from "../../axios-auth.js";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class SignIn extends Component {
@@ -107,6 +108,12 @@ class SignIn extends Component {
                 Submit <i className="fas fa-chevron-right"></i>
               </button>
             )}
+            <Link to="/otp" style={{margin: "auto"}}>
+              <button className={classes.Button}>
+                <i className="fas fa-mobile"></i> Login with OTP{" "}
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </Link>
           </div>
         </Fade>
         <Footer />

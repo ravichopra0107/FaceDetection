@@ -32,7 +32,8 @@ class Navbar extends Component {
               Logout
             </NavLink>
           </div>
-        ) : this.props.match.url === "/login" ? (
+        ) : this.props.match.url === "/login" ||
+          this.props.match.url === "/otp" ? (
           <NavLink to="/" className={classes.Ulink}>
             Sign Up
           </NavLink>
@@ -53,9 +54,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return{
-    setAuthFalse: () => dispatch({ type: "False_Auth"})
+  return {
+    setAuthFalse: () => dispatch({ type: "False_Auth" }),
   };
-}
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));
