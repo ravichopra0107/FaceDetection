@@ -15,6 +15,11 @@ class SignIn extends Component {
     password: "",
     err: false,
   };
+  componentDidMount() {
+    if (this.props.auth) {
+      this.props.history.replace("/");
+    }
+  }
   change = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };

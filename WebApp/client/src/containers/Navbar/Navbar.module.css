@@ -28,7 +28,7 @@
   color: white;
 }
 .Items{
-  width: 8vw;
+  width: 14vw;
   display: flex;
   justify-content: space-between;
 }

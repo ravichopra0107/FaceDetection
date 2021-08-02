@@ -6,6 +6,11 @@ import { connect } from "react-redux";
 import Logo from "../../components/UI/Logo/Logo.js";
 
 class Navbar extends Component {
+  logout = (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    this.props.setAuthFalse();
+  };
   render() {
     return (
       <div className={classes.Navbar}>
@@ -17,6 +22,14 @@ class Navbar extends Component {
             </NavLink>
             <NavLink to="/profile" className={classes.Link}>
               <i className="fas fa-user-circle"></i>
+            </NavLink>
+            <NavLink
+              to="/"
+              className={classes.Ulink}
+              style={{ fontWeight: "normal" }}
+              onClick={this.logout}
+            >
+              Logout
             </NavLink>
           </div>
         ) : this.props.match.url === "/login" ? (
@@ -39,4 +52,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Navbar));
+const mapDispatchToProps = (dispatch) => {
+  return{
+    setAuthFalse: () => dispatch({ type: "False_Auth"})
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));

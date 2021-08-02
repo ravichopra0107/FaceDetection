@@ -1,12 +1,14 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://ateatiiitm.herokuapp.com/",
 });
-instance.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+instance.defaults.headers.post["Content-Type"] =
+  "application/json;charset=utf-8";
+instance.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 instance.interceptors.request.use(
   (config) => {
-    const userData = localStorage.getItem("user");
+    const userData = JSON.parse(localStorage.getItem("user"));
     if (userData) {
       let accessToken = userData.token;
       if (accessToken) {
