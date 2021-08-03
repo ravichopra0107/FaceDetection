@@ -40,10 +40,10 @@ router.post("/signup", (req, res) => {
             if (!err) {
               console.log("Successfully added to database!");
               // CHANGE
-              // sendMessage(
-              //   `Hello ${req.body.name},\nwelcome to ATE...*`,
-              //   req.body.contact
-              // );
+              sendMessage(
+                `Hello ${req.body.name},\nwelcome to ATE...*`,
+                req.body.contact
+              );
               jwt.sign(
                 { user: { ...newUser, meals: null } },
                 process.env.JWTSECRET,

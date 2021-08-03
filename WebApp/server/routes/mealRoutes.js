@@ -32,10 +32,10 @@ router
           student.save((err) => {
             if (!err) {
               // CHANGE
-              // sendMessage(
-              //   `Hello ${student.name},\n Enjoy your meal!`,
-              //   student.contact
-              // );
+              sendMessage(
+                `Hello ${student.name},\n Enjoy your meal!`,
+                student.contact
+              );
               res.sendStatus(200);
             } else {
               console.log(err);
