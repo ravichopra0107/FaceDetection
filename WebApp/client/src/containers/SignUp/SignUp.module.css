@@ -54,7 +54,7 @@
   flex-grow: 4;
   height: 100vh;
   overflow: hidden;
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 .Child2 img {
   display: inline-block;
@@ -103,4 +103,15 @@
   font-weight: bold;
   background-color: #00c1d4;
   color: #eeeeee;
+}
+@media (max-width: 750px) {
+  .Child2{
+    display: none;
+  }
+  .Child1{
+    margin: 5vh auto;
+  }
+  .Child1 input{
+    width: 77%;
+  }
 }

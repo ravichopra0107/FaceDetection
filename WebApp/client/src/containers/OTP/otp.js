@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar/Navbar.js";
-import Footer from "../../components/Footer/Footer.js";
 import loaderSVG from "../../assets/loader.svg";
 import Aux from "../../hoc/Aux/Aux.js";
 import classes from "./otp.module.css";
@@ -49,7 +47,6 @@ class OTP extends Component {
       .then((res) => {
         if (res.status === 200) {
           if (res.data.status === true) {
-            console.log(res.data);
             const user = {
               ...res.data.user,
               token: res.data.token,
@@ -68,7 +65,6 @@ class OTP extends Component {
   render() {
     return (
       <Aux>
-        <Navbar />
         <div className={classes.OTP}>
           <h1>Login with OTP</h1>
           {this.state.err && <p className={classes.P}>*Invalid OTP</p>}
@@ -110,7 +106,7 @@ class OTP extends Component {
                 name="otp"
                 value={this.state.otp}
                 onChange={this.change}
-                placeholder="xxxx"
+                placeholder="xxxxxx"
               />
               {this.state.loading ? (
                 <button
@@ -131,7 +127,6 @@ class OTP extends Component {
             </Fade>
           )}
         </div>
-        <Footer />
       </Aux>
     );
   }

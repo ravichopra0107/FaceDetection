@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "../../axios-auth.js";
-import Navbar from "../../containers/Navbar/Navbar.js";
-import Footer from "../../components/Footer/Footer.js";
 import Aux from "../../hoc/Aux/Aux.js";
 import classes from "./Payment.module.css";
 
@@ -25,7 +23,6 @@ class Payment extends Component {
   render() {
     return (
       <Aux>
-        <Navbar />
         <table className={classes.Table}>
           <thead className={classes.TableHead}>
             <tr className={classes.TableRow}>
@@ -50,13 +47,12 @@ class Payment extends Component {
         </table>
         <form
           method="POST"
-          action="https://ateatiiitm.herokuapp.com/api/payment/create"
+          action="http://localhost:3000/api/payment/create"
         >
           <button type="submit" className={classes.Button}>
             Pay Now <i className="fas fa-chevron-right"></i>
           </button>
         </form>
-        <Footer />
       </Aux>
     );
   }

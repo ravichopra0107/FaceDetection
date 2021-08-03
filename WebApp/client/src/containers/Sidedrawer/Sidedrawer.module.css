@@ -1,0 +1,38 @@
+.Link {
+  text-decoration: none;
+  margin: 0;
+  font-size: 4vh;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+.Link:hover,
+.Link:active {
+  color: #f8485e;
+}
+.Ulink {
+  margin: 0;
+  font-size: 4vh;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+.Ulink:hover,
+.Ulink:active {
+  color: #f8485e;
+}
+.List{
+    margin: 0;
+    padding: 7vh;
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    list-style: none;
+    background-color: #512d6d;
+}
+.List li{
+    display: inline-block;
+    margin: 2vh auto;    
+}

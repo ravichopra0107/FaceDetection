@@ -45,3 +45,14 @@
 .P {
   color: #f8485e;
 }
+@media (max-width: 750px) {
+  .OTP{
+    width: 80%;
+  }
+  .OTP h1{
+    font-size: 9vw;
+  }
+  .Input{
+    font-size: 7vw;
+  }
+}

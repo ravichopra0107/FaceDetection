@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import classes from "./SignUp.module.css";
 import foodSVG from "../../assets/food.svg";
 import loaderSVG from "../../assets/loader.svg";
-import Navbar from "../Navbar/Navbar.js";
-import Footer from "../../components/Footer/Footer.js";
 import Aux from "../../hoc/Aux/Aux.js";
 import Fade from "react-reveal/Fade";
 import axios from "../../axios-auth.js";
@@ -103,7 +101,6 @@ class SignUp extends Component {
   render() {
     return (
       <Aux>
-        <Navbar />
         <div className={classes.Parent}>
           <div className={classes.Child1}>
             {this.state.div === 1 && (
@@ -217,7 +214,6 @@ class SignUp extends Component {
                 </div>
               </Fade>
             )}
-            <Footer />
           </div>
           <div className={classes.Child2}>
             <img src={foodSVG} alt="foodSVG" />

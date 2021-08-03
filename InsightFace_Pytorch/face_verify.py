@@ -69,7 +69,7 @@ if __name__ == '__main__':
                         if not flags[idx]:
                             print(names[results[idx] + 1])
                             # Send request to Web Server with roll ID
-                            req = requests.post("https://ateatiiitm.herokuapp.com/api/meal/",
+                            req = requests.post("http://localhost:3000/api/meal/",
                                                 json={"id": names[results[idx] + 1], "admin": args.password})
                             if req.status_code == 403:
                                 print("Wrong")

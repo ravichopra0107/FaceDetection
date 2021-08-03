@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar/Navbar.js";
-import Footer from "../../components/Footer/Footer.js";
 import Aux from "../../hoc/Aux/Aux.js";
 import Meal from "../../components/Meal/Meal.js";
 import axios from "../../axios-auth.js";
@@ -19,7 +17,6 @@ class Timeline extends Component {
   render() {
     return (
       <Aux>
-        <Navbar />
         <Fade>
           <div style={{ overflowX: "auto" }}>
             <table className={classes.Table}>
@@ -50,7 +47,6 @@ class Timeline extends Component {
             </table>
           </div>
         </Fade>
-        <Footer />
       </Aux>
     );
   }

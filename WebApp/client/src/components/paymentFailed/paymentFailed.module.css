@@ -1,0 +1,10 @@
+.failSVG {
+  width: 20vw;
+  display: block;
+  margin: 20vh auto;
+}
+@media (max-width: 750px) {
+    .failSVG {
+        width: 50vw;
+    }
+}

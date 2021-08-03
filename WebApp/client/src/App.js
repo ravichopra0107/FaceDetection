@@ -1,13 +1,47 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import jwt from "jsonwebtoken";
+import Navbar from "./containers/Navbar/Navbar.js";
+import Footer from "./components/Footer/Footer.js";
 import { connect } from "react-redux";
-import Timeline from "./containers/Timeline/Timeline.js";
-import SignUp from "./containers/SignUp/SignUp.js";
-import Payment from "./containers/Payment/Payment.js";
-import OTP from "./containers/OTP/otp.js";
-import SignIn from "./containers/SignIn/SignIn.js";
+import loaderSVG from "./assets/loader2.svg";
+
+const OTP = React.lazy(() =>
+  new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+    import("./containers/OTP/otp.js")
+  )
+);
+
+const paymentFailed = React.lazy(() =>
+  new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+    import("./components/paymentFailed/paymentFailed.js")
+  )
+);
+
+const Timeline = React.lazy(() =>
+  new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+    import("./containers/Timeline/Timeline.js")
+  )
+);
+
+const SignUp = React.lazy(() =>
+  new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+    import("./containers/SignUp/SignUp.js")
+  )
+);
+
+const Payment = React.lazy(() =>
+  new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+    import("./containers/Payment/Payment.js")
+  )
+);
+
+const SignIn = React.lazy(() =>
+  new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+    import("./containers/SignIn/SignIn.js")
+  )
+);
 
 class App extends Component {
   UNSAFE_componentWillMount() {
@@ -16,7 +50,6 @@ class App extends Component {
     if (user) {
       var decodedToken = jwt.decode(user.token);
       var dateNow = new Date();
-      console.log(decodedToken.iat * 1000 + 3600000 - dateNow.getTime());
       if (dateNow.getTime() > decodedToken.iat * 1000 + 3600000)
         isExpired = true;
       if (isExpired) {
@@ -30,12 +63,30 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route path="/otp" component={OTP} />
-          <Route path="/pay" component={Payment} />
-          <Route path="/login" component={SignIn} />
-          <Route path="/" component={this.props.auth ? Timeline : SignUp} />
-        </Switch>
+        <Navbar />
+        <Suspense
+          fallback={
+            <div
+              style={{
+                height: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img src={loaderSVG} alt="loader" />
+            </div>
+          }
+        >
+          <Switch>
+            <Route path="/paymentFailed" component={paymentFailed} />
+            <Route path="/otp" component={OTP} />
+            <Route path="/pay" component={Payment} />
+            <Route path="/login" component={SignIn} />
+            <Route path="/" component={this.props.auth ? Timeline : SignUp} />
+          </Switch>
+        </Suspense>
+        <Footer />
       </div>
     );
   }

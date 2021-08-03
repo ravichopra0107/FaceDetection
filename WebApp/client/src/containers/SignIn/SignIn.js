@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar/Navbar.js";
 import Aux from "../../hoc/Aux/Aux.js";
 import loaderSVG from "../../assets/loader.svg";
 import classes from "./SignIn.module.css";
-import Footer from "../../components/Footer/Footer.js";
 import Fade from "react-reveal/Fade";
 import axios from "../../axios-auth.js";
 import { Link } from "react-router-dom";
@@ -62,7 +60,6 @@ class SignIn extends Component {
   render() {
     return (
       <Aux>
-        <Navbar />
         <Fade>
           <div className={classes.SignIn}>
             <h1 className={classes.H1}>Login</h1>
@@ -90,7 +87,6 @@ class SignIn extends Component {
               this.state.password.length === 0) && (
               <p className={classes.Error}>Please enter name and password.</p>
             )}
-            <p className={classes.P}>Forgot password?</p>
             {this.state.loading ? (
               <button className={classes.Button} style={{ cursor: "disabled" }}>
                 <img
@@ -116,7 +112,6 @@ class SignIn extends Component {
             </Link>
           </div>
         </Fade>
-        <Footer />
       </Aux>
     );
   }

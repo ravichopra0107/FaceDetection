@@ -61,9 +61,9 @@ router.post("/create", verifyToken, (req, res) => {
           ],
           mode: "payment",
           success_url:
-            "https://ateatiiitm.herokuapp.com/api/payment/check?sessionID={CHECKOUT_SESSION_ID}",
+            "http://localhost:3000/api/payment/check?sessionID={CHECKOUT_SESSION_ID}",
           cancel_url:
-            "https://ateatiiitm.herokuapp.com/api/payment/check?sessionID={CHECKOUT_SESSION_ID}",
+            "http://localhost:3000/api/payment/check?sessionID={CHECKOUT_SESSION_ID}",
         });
         res.redirect(303, session.url);
       }
