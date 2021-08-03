@@ -27,7 +27,7 @@ mongoose.connect("mongodb://localhost:27017/messDB", {
   useUnifiedTopology: true,
 });
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./build", "index.html"));
 });
 // App runs on port 3000 by default;
 const PORT = process.env.PORT || 3000;
