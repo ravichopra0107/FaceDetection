@@ -27,7 +27,6 @@ class OTP extends Component {
   sendOTP = (event) => {
     this.setState({ loading: true });
     axios.post("/api/auth/OTP", { phone: this.state.phone }).then((res) => {
-      console.log(res);
       if (res.data.status !== false) {
         this.id = res.data.id;
         this.setState({ phoneErr: false, div: 2, loading: false });

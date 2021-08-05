@@ -1,4 +1,6 @@
 .Footer {
+  display: flex;
+  justify-content: space-between;
   position: sticky;
   bottom: 0;
   background-color: #512d6d;
@@ -8,7 +10,11 @@
   color: #eeeeee;
   box-sizing: border-box;
 }
-.Link{
+.P {
+  margin: 0;
+  font-size: 1.5vw;
+}
+.Link {
   text-decoration: none;
   color: #ffffff;
 }
@@ -30,5 +36,8 @@
 @media (max-width: 750px) {
   :global .fa-linkedin-in {
     margin-right: 5vw;
+  }
+  .P {
+    font-size: 6vw;
   }
 }

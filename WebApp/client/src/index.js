@@ -9,10 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 import reducer from "./store/reducer.js";
 require("dotenv").config();
 
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
