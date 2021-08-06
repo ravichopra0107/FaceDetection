@@ -255,7 +255,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
+reimbursement_application.odt
+reimbursement_application.pdf
 InsightFace_Pytorch/mtcnn_pytorch/src/weights/model_ir_se50.pth
 InsightFace_Pytorch/mtcnn_pytorch/src/weights/onet.npy
 InsightFace_Pytorch/mtcnn_pytorch/src/weights/pnet.npy
