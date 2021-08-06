@@ -1,6 +1,6 @@
 # Dynamic Mess Billing System using Face Verification
 #### The objective is to develop and experiment with solutions to automate and dynamizethe billing system in the mess areas of the institute.  This project aims to replace the current billingsystem  (semester-based)  with  a  dynamic  system  that  bills  students  per  meal.   We  used  a  Faceverification system to realize the above-stated objectives
-[Website](https://ateatiiitm.herokuapp.com/)
+[Website](https://ateatiiitm.herokuapp.com/) \
 [Postman Collection](https://www.getpostman.com/collections/9865b67454f2ab5c1486)
 # Bibliography
 ```
